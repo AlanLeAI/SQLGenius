@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='sqlgen.css') }}">
+    <div class="center-container">
+        <h1>SQL Query Generator</h1>
+
+        <div class="button-container">
+            <button type="button" id="addTableBtn" class="btn btn-primary">
+                Add Table
+            </button>
+        <!-- Reset Button -->
+            <form method="POST" action="/reset">
+                <button type="submit" class="btn btn-danger">Remove All Tables</button>
+            </form>
+        <!-- Pop Button -->
+            <form method="POST" action="/pop">
+                <button type="submit" class="btn btn-danger">Pop Last Table</button>
+            </form>
+            <form>
+                <button type="" class="btn btn-danger">Edit Table</button>
+            </form>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="table-create">
+        <form id="tableForm" method="POST" action="/generate_sql">
+            <div class="form-group">
+                <label for="table_name">Table Name:</label>
+                <input type="text" class="form-control" id="table_name" name="table_name" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" id="addColumnBtn">Add Column</button>
+            </div>
+            <div id="columnFields"></div>
+            <button type="submit" class="btn btn-primary">Generate SQL</button>
+        </form>
+    </div>
+
+    {% if tables %}
+    <h1>Database Schema</h1>
+    <div class="database-schema">
+        {% for table in tables %}
+        <div class="table-box">
+            <div class="table-name">{{ table.name }}</div>
+            <div class="table-line"></div>
+            <div class="columns">
+                <!-- Horizontal Line -->
+                {% for column in table.columns %}
+                <div class="column {% if column.condition == 'primary_key' %}primary-key{% endif %}">
+                    {{ column.name }} ({{column.dtype}})
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!-- SQL Requirement Form -->
+    <form id="sqlForm" method="POST" action="/sqlgen">
+        <div class="form-group">
+            <label for="requirement">Enter Your SQL Requirement:</label>
+            <br>
+            <textarea class="form-control" id="requirement" name="requirement" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate SQL</button>
+    </form>
+
+    <!-- Display Generated SQL -->
+    {% if generated_sql %}
+    <div id="generatedSQL">
+        <h2>Generated SQL:</h2>
+        <pre>{{ generated_sql }}</pre>
+    </div>
+    {% endif %}
+
+
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+{% endblock %}
+

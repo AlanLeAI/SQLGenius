@@ -1,0 +1,206 @@
+/* Reset some default styles */
+
+/* Center-align text within the container */
+.container {
+    width: 100%; /* Adjust the max width as needed */
+    padding: 20px;
+    position: flex;
+}
+
+.intro{
+    display: flex;
+    width: 100%;
+    /* border: 4px solid white ; */
+    height: 500px;
+}
+
+
+.gif{
+    width: 50%;
+}
+.gif img{
+    border-radius: 30px;
+}
+
+.header{
+    margin-top: 280px;
+    width: 50%;
+}
+.header h3{
+    font-size: 80px;
+    color: #fff;
+    line-height: 1;
+}
+ p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 16%;
+}
+
+/* Style for paragraphs */
+.section p {
+    font-size: 30px;
+    line-height: 2;
+    margin: 1%;
+    text-align: justify;
+}
+
+.section{
+    /* border: 4px solid white; */
+    /* box-shadow: 0 1px 1px black; */
+    /* background-color: #44444c; */
+    height: fit-content;
+    align-items: center;
+    border-radius: 40px;
+    display: flex;
+    margin-bottom: 16%;
+}
+
+
+.section1 {
+
+    height: fit-content;
+    align-items: center;
+    width: 100%;
+    border-radius: 40px;
+    display: block;
+    justify-content: center;
+    /* margin-bottom: 16%; */
+}
+
+.section1 h3{
+    font-size: 60px;
+    color: #fff;
+}
+
+.systemdesign svg{
+    width: 100%;
+    margin: auto;
+}
+
+
+.section2 {
+    height: fit-content;
+    width: 100%;
+    border-radius: 40px;
+    display: block;
+
+    margin-bottom: 16%;
+    margin-top: 10%;
+    display: flex;
+}
+
+.section2 h3{
+    font-size: 60px;
+    color: #fff;
+    width: 50%;
+
+}
+
+/* Styles for the arrow connecting divs */
+
+
+/* Styles for the container */
+
+
+
+.container2{
+    margin-top: 5%;
+    display: flex; 
+    margin-bottom: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+    height: 100%;
+}
+  
+.card{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 16px;
+    transition: all 0.5s ease-in;
+}
+
+.card p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    border: 2px solid #01C6FF;
+    transition: all 0.3s ease-out;
+}
+
+
+.glass{
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.ico{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+
+    
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+
+
+@media only screen and (max-width:993px){
+    .card {
+        display: flex;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        }
+
+    .ico{
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+    .ico-txt{
+        font-size: 5px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .container{
+        gap: 0.6rem;
+    }
+    .card{
+        width: 80px;
+        height: 80px;
+
+    }
+    .ico{
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+    .ico-txt{
+        font-size: 5px;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:300px){
+    .container{
+        padding: 0;
+        margin: 0;
+    }
+}
+  

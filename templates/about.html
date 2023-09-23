@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+
+    <div class="containter">
+
+        <div class="header">
+            <h3>Who Can Use SQLGenius?</h3>
+        </div>
+
+        <div class="user">
+            <div class="u1">
+                <div class="userimg">
+                    <img src="{{url_for('static', filename = 'images/developers.png')}}" alt="coderimg">
+                </div>
+
+                <div class="role">
+                    Developers
+                </div>
+                <div class="describe">
+                    SQLGenius streamlines SQL query creation, saving time and minimizing errors for developers.
+                </div>
+            </div>
+
+            <div class="u1">
+                <div class="userimg">
+                    <img src="{{url_for('static', filename = 'images/analysts.png')}}" alt="analystsimg">
+                </div>
+
+                <div class="role">
+                    Analysts
+                </div>
+                <div class="describe">
+                    SQLGenius empowers analysts to efficiently access and manipulate data using SQL, reducing reliance on technical assistance.
+                </div>
+            </div>
+
+            <div class="u1">
+                <div class="userimg">
+                    <img src="{{url_for('static', filename = 'images/student.png')}}" alt="student">
+                </div>
+
+                <div class="role">
+                    Students
+                </div>
+                <div class="describe">
+                    SQLGenius serves as an accessible learning tool for students to practice SQL through natural language input.
+                </div>
+            </div>
+
+
+            <div class="u1">
+                <div class="userimg">
+                    <img src="{{url_for('static', filename = 'images/nonprofessional.png')}}" alt="nonprofessional">
+                </div>
+
+                <div class="role">
+                    Non-Professionals
+                </div>
+                <div class="describe">
+                    SQLGenius makes data extraction user-friendly, allowing individuals without technical skills to access and utilize data effectively.
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="header">
+            <h3>What are the use cases for SQLGenius?</h3>
+        </div>
+
+        <div class="usecase">
+            <div class="uc">
+                <div class="uchead">
+                    Education
+                </div>
+                <div class="ucdes">
+                    SQLGenius can be employed in the field of education to help educators and students generate SQL queries for database-related projects, research, and data analysis, enhancing the learning and research processes.
+                </div>
+            </div>
+
+            <div class="uc">
+                <div class="uchead">
+                    Business Management
+                </div>
+                <div class="ucdes">
+                    In the realm of business management, SQLGenius can be utilized to generate SQL queries for tasks such as sales analysis, inventory management, and financial reporting, aiding businesses in making informed decisions.
+                </div>
+            </div>
+
+            <div class="uc">
+                <div class="uchead">
+                    Marketing
+                </div>
+                <div class="ucdes">
+                    SQLGenius can also find application in the field of marketing, where it can be used to create SQL queries for customer segmentation, campaign performance analysis, and data-driven marketing strategies, improving marketing efficiency and ROI.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="header">
+            <h3>Hello From Alan</h3>
+        </div>
+
+        <div class="creator">
+            <div class="creatorimg">
+                <img src="{{url_for("static",filename="images/alan.jpeg")}}" alt="alanimg">
+            </div>
+            <div class="personalinfo">
+                    Gmail: tuanle_2024@depauw.edu
+                    <br>
+                    LinkedIn: https://www.linkedin.com/in/tuanle197/
+                    <br>
+                    Github: https://github.com/AlanLeAI
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

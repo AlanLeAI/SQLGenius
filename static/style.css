@@ -1,0 +1,70 @@
+/* Reset some default styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Dark Theme */
+body {
+    /* background-image: url(/static/images/1.png); */
+    /* background-color: #0c192b; */
+    background-color: black; 
+    color: white;
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Style for the sidebar */
+/* Style for the sidebar (navigation bar) */
+.sidebar {
+    width: 170px;
+    background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background */
+    opacity: 0.25;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar:hover{
+    opacity: 1;
+}
+
+.sidebar h1 {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 20px;
+    margin-top: 20%;
+    /* border: 2px solid white; */
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sidebar ul li:hover {
+    background-color: #555;
+    scale: 1.2;
+}
+
+/* Style for the content */
+.content {
+    margin-left: 170px; /* Match the width of the sidebar */
+    padding: 20px;
+}

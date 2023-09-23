@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='feedback.css') }}">
+
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form method="POST" action="/submit-feedback">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="major">Major:</label>
+            <select name="major" id="major">
+                <option value="csc">Computer Science</option>
+                <option value="math">Mathematics</option>
+                <option value="ce">Computer Engineering</option>
+                <option value="ds">Data Science</option>
+                <option value="bu">Business</option>
+                <option value="ec">Economics</option>
+                <option value="fin">Finance</option>
+            </select>
+
+            
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
