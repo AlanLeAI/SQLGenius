@@ -18,8 +18,8 @@ app.config.update(dict(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='tuanle_2024@depauw.edu',
-    MAIL_PASSWORD='jmmwglrirwdyinac'
+    MAIL_USERNAME='<email>',
+    MAIL_PASSWORD='<Password>'
 ))
 
 
