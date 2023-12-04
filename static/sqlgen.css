@@ -2,23 +2,44 @@
 h1{
     text-align: center;
 }
-/* Centering Container */
-.center-container {
+
+/* Styling for instruction */
+.instruction{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 20%; /* Adjust as needed */
+    flex-direction: row;
 }
 
 /* Styling for Buttons */
+
+
+/* Style for the hidden file input */
+.custom-button input[type="file"] {
+    display: none;
+}
+
+.custom-button {
+    width: 280px; /* Adjust button width as needed */
+    margin: 10px;
+    padding: 10px;
+    background-color: #333333;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.custom-button:hover{
+    background-color: red;
+}
+
+
 .button-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 2px solid #ffffff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     margin-bottom: 2%;
 }
 
@@ -31,35 +52,28 @@ h1{
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .button-container button:hover {
-    width: 200px; /* Adjust button width as needed */
-    margin: 10px;
-    padding: 10px;
     background-color: #ff0000;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
+}
+
+#info{
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
 }
 
 /* Table Create Decoration */
 
 .table-create {
-    margin-top: 40px;
-    display: none;
-    padding: 20px;
-    border: 1px solid #fff;
+    display: None;
     border-radius: 5px;
-    background-color: #333333;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60%; /* Adjust the width as needed */
+    width: 100%; /* Adjust the width as needed */
     margin: 0 auto; /* Center the box horizontally */
+    margin-top: 20px;
 }
 
 .table-create form {
@@ -78,19 +92,31 @@ h1{
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #fff;
-    border-radius: 4px;
+    border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
 }
 
 .table-create .btn-secondary {
     background-color: #333333;
-    border-color: #fff;
+    width: 310px;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .table-create .btn-primary {
     background-color: #333333;
-    border-color: #fff;
+    width: 310px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.table-create .btn-secondary:hover {
+    background-color: red;
+}
+
+.table-create .btn-primary:hover {
+    background-color: red;
 }
 
 .table-create .btn-secondary,
@@ -98,11 +124,78 @@ h1{
     color: #fff;
     padding: 8px 15px;
     cursor: pointer;
+
 }
 
 .table-create #columnFields {
     margin-top: 15px;
 }
+
+
+.table-edit{
+    display: None;
+    border-radius: 5px;
+    flex-direction: column;
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the box horizontally */
+    margin-top: 20px;
+}
+
+.table-edit form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.table-edit label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.table-edit .form-control {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table-edit .btn-secondary {
+    background-color: #333333;
+    width: 310px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.table-edit .btn-primary {
+    background-color: #333333;
+    width: 310px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.table-edit .btn-secondary:hover {
+    background-color: red;
+}
+
+.table-edit .btn-primary:hover {
+    background-color: red;
+}
+
+.table-edit .btn-secondary,
+.table-edit .btn-primary {
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+
+}
+
+.table-edit #columnFields {
+    margin-top: 15px;
+}
+
 
 /* Box around .table-create */
 
@@ -113,10 +206,8 @@ h1{
 /* Styled Database Schema */
 .database-schema {
     margin-top: 40px;
-    border: 3px solid #fff;
     padding: 20px;
     border-radius: 5px;
-    background-color: #333333;
     display: flex;
     justify-content: center;
 }
@@ -166,14 +257,17 @@ h1{
 
 /* Styled Form */
 #sqlForm {
-    margin-top: 20px;
+    margin-top: 20%;
     margin: auto;
-    width: 70%;
+    width: 100%;
     text-align: center; /* Center the form elements */
     padding: 20px; /* Add padding around the form */
-    border: 2px solid #333; /* Add a border around the form */
     border-radius: 5px; /* Round the corners */
-    background-color: #333333; /* Set background color */
+}
+#requirement{
+    width: 500px;
+    height: 150px;
+    font-size: 20px;
 }
 
 #sqlForm button{
@@ -189,9 +283,7 @@ h1{
 } 
 
 #sqlForm button:hover{
-    width: 200px; /* Adjust button width as needed */
-    margin: 10px;
-    padding: 10px;
+
     background-color: #ff0000;
     border: none;
     color: #fff;
@@ -202,10 +294,23 @@ h1{
 
 /* Styled Generated SQL Display */
 #generatedSQL {
+    width: fit-content;
+    font-size: 25px;
+    margin: auto;
+    align-items: center;
     margin-top: 20px;
-    text-align: center; /* Center the content */
     padding: 20px; /* Add padding around the content */
     border: 2px solid #333; /* Add a border around the content */
     border-radius: 5px; /* Round the corners */
     background-color: #6f2232; /* Set background color */
+}
+
+.form-group{
+    /* border: solid 4px white; */
+    margin-top: 1%;
+    margin: auto;
+    align-items: center;
+    height: fit-content;
+    width: 80%;
+    border-radius: 10px;
 }

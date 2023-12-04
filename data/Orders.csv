@@ -1,0 +1,4 @@
+order_id,customer_id,order_date,totalprice
+1,CSC, Bard,
+2,MATH, chatGPT,
+3,ECON, Falcon,

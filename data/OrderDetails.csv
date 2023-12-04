@@ -1,0 +1,4 @@
+order_detail_id,order_id,product_id,quantity,describe
+1,CSC, Bard,,
+2,MATH, chatGPT,,
+3,ECON, Falcon,,

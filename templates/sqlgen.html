@@ -1,41 +1,109 @@
 {% extends "layout.html" %}
 {% block content %}
     <link rel="stylesheet" href="{{ url_for('static', filename='sqlgen.css') }}">
-    <div class="center-container">
-        <h1>SQL Query Generator</h1>
-
+    <h1>SQL Query Generator</h1>
+    
+    <div class="instruction">
         <div class="button-container">
             <button type="button" id="addTableBtn" class="btn btn-primary">
                 Add Table
             </button>
+
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv" required style="margin-left: 20%; height: 30px; align-items: center;">
+                <br>
+                <button type="submit">Upload A CSV</button>
+            </form>
+
+            
+
         <!-- Reset Button -->
             <form method="POST" action="/reset">
                 <button type="submit" class="btn btn-danger">Remove All Tables</button>
             </form>
         <!-- Pop Button -->
             <form method="POST" action="/pop">
-                <button type="submit" class="btn btn-danger">Pop Last Table</button>
+                <button type="submit" class="btn btn-danger">Remove Last Table</button>
             </form>
-            <form>
-                <button type="" class="btn btn-danger">Edit Table</button>
+
+            <button type="" id="editTableBtn" class="btn btn-primary">Edit Table</button>
+
+        </div>
+
+        <div id ="info">
+            Enter The Database Schema <br>
+            Student( <u>id</u>, Name, Class) <br>
+            Course(<u>CourseId</u>, StudentId, Title, Prof)
+        </div>
+
+        <div class="table-create">
+            <form id="tableForm" method="POST" action="/generate_sql">
+                <div class="form-group-table-name">
+                    <label for="table_name">Enter Table Name:</label>
+                    <input type="text" class="form-control" id="table_name" name="table_name" required>
+                </div>
+                <div id="columnFields"></div>
+                <div class="form-group-button">
+                    <button type="button" class="btn btn-secondary" id="addColumnBtn">Add Column</button>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate Database</button>
             </form>
         </div>
+
+        <div class="table-edit">
+            <form id="editTableForm" method="POST" action="/edit">
+                <div class="form-group">
+                    <label for="table_name_edit">Choose Table To Edit:</label>
+                    <select class="form-control" id="table_name_edit" name="table_name_edit" required> 
+                        <option value="null">None</option>
+                        {% for table in tables %}
+                            <option value="{{table.name}}">{{table.name}}</option>
+                        {% endfor %}
+                    </select> 
+                    <br>
+                    <label for="column_name_edit">Enter Column Name To Edit:</label>
+                    <select class="form-control" id="column_name_edit" name="column_name_edit" required disabled>
+                        <option value="null">None</option>
+                    </select>
+
+                    <label for="column_datatype_edit">Data Type:</label>
+                    <select class="form-control" id="column_datatype_edit" name="column_datatype_edit" required>
+                        <option value="int">Integer</option>
+                        <option value="txt">Text</option>
+                        <option value="float">Float</option>
+                        <option value="date">Date</option>
+                    </select>
+
+                    <label for="column_condition_edit">Column Condition:</label>
+                    <select class="form-control" id="column_condition_edit" name="column_condition_edit" onchange="toggleForeignKeyEdit()">
+                        <option value="none">Null</option>
+                        <option value="not_null">Not Null</option>
+                        <option value="primary_key">Primary Key</option>
+                        <option value="foreign_key">Foreign Key</option>
+                    </select>
+
+
+                    <div id="foreign_key_edit" style="display: none;">
+                        <label for="column_reference_table_edit">Reference Table:</label>
+                        <select class="form-control" id="column_reference_table_edit" name="column_reference_table_edit">
+                            <option value="null">None</option>
+                            {% for table in tables %}
+                                <option value="{{table.name}}">{{table.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Edit Table</button>
+            </form>
+        </div>
+
     </div>
+    
+
     <!-- Modal -->
 
-    <div class="table-create">
-        <form id="tableForm" method="POST" action="/generate_sql">
-            <div class="form-group">
-                <label for="table_name">Table Name:</label>
-                <input type="text" class="form-control" id="table_name" name="table_name" required>
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-secondary" id="addColumnBtn">Add Column</button>
-            </div>
-            <div id="columnFields"></div>
-            <button type="submit" class="btn btn-primary">Generate SQL</button>
-        </form>
-    </div>
+    
 
     {% if tables %}
     <h1>Database Schema</h1>
@@ -48,7 +116,7 @@
                 <!-- Horizontal Line -->
                 {% for column in table.columns %}
                 <div class="column {% if column.condition == 'primary_key' %}primary-key{% endif %}">
-                    {{ column.name }} ({{column.dtype}})
+                    {{ column.name }} ({{column.dtype}}) {% if column.condition == 'foreign_key' %}({{column.referTo}}){% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -56,14 +124,19 @@
         {% endfor %}
     </div>
     {% endif %}
+    <br><br><br>
     <!-- SQL Requirement Form -->
     <form id="sqlForm" method="POST" action="/sqlgen">
         <div class="form-group">
             <label for="requirement">Enter Your SQL Requirement:</label>
             <br>
-            <textarea class="form-control" id="requirement" name="requirement" required></textarea>
+            <textarea class="form-control" id="requirement" name="requirement"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Generate SQL</button>
+        <form method="POST" action="/update_sql">
+            <button type="submit" class="btn btn-primary">Update SQL</button>
+        </form>
+        
     </form>
 
     <!-- Display Generated SQL -->
@@ -72,11 +145,60 @@
         <h2>Generated SQL:</h2>
         <pre>{{ generated_sql }}</pre>
     </div>
+    <script>
+        document.getElementById('generatedSQL').scrollIntoView({ behavior: 'smooth' });
+    </script>
     {% endif %}
 
 
 
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+
+    function toggleForeignKeyEdit() {
+        var columnCondition = document.getElementById("column_condition_edit").value;
+        var foreignKeyDiv = document.getElementById("foreign_key_edit");
+
+        if (columnCondition === "foreign_key") {
+            foreignKeyDiv.style.display = "block";
+        } else {
+            foreignKeyDiv.style.display = "none";
+        }
+    }
+        // When the table selection changes
+    $("#table_name_edit").change(function () {
+        // Enable the column select
+        $("#column_name_edit").prop("disabled", false);
+
+        // Get the selected table name
+        var tableName = $(this).val();
+
+        // Clear existing options
+        $("#column_name_edit").empty();
+
+        // Add a default "None" option
+        $("#column_name_edit").append('<option value="null">None</option>');
+
+        // Use AJAX to get column options from the server
+        $.ajax({
+            url: '/get_columns',  // Update with your Flask route
+            type: 'POST',
+            data: JSON.stringify({ table_name: tableName }),
+            contentType: 'application/json',
+            success: function (data) {
+                // Populate the column options based on the response from the server
+                $.each(data.columns, function (index, column) {
+                    $("#column_name_edit").append('<option value="' + column.name + '">' + column.name + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching columns: ', error);
+            }
+        });
+});
+    </script>
 
 {% endblock %}
 
