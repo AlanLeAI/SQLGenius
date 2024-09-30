@@ -25,10 +25,10 @@
 <img src = "static/demoimages/2.png">
   
 - **Visualization of Database Schema**: The user can visualize the input database schema as well as the columns of each table.
-<img src = "static/demoimages/3.png">
+<img src = "static/demoimages/4.png">
 
 - **SQL Generation**: The user can enter the requirement in natural language. SQLGenius will gather information from the database schema and users's requirements to generate SQLite code.
-
+<img src = "static/demoimages/5.png">
 
 
 ## Run the Program by 
