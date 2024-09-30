@@ -3,7 +3,7 @@ import os
 import sqlparse
 
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = <OPENAI_API_KEY>
 
 
 tables = [{'name': 'Student', 
