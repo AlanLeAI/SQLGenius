@@ -3,7 +3,7 @@ import os
 import sqlparse
 
 # Set your OpenAI API key
-openai.api_key = <OPENAI_API_KEY>
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 
 tables = [{'name': 'Student', 
