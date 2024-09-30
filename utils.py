@@ -3,7 +3,7 @@ import os
 import sqlparse
 
 # Set your OpenAI API key
-openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = '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'
 
 
 tables = [{'name': 'Student', 
@@ -95,5 +95,5 @@ def message_to_prompt(schema, requirement):
 
     return formatted_sql
 
-# a = message_to_prompt(schema_to_txt(tables), "Get number of student for each department")
-# print(a)
+a = message_to_prompt(schema_to_txt(tables), "Get number of student for each department")
+print(a)

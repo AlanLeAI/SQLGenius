@@ -8,7 +8,7 @@ from flask_mail import Mail, Message
 from flask_session import Session
 
 # Set your OpenAI API key
-openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 app = Flask(__name__)
 sess = Session()
