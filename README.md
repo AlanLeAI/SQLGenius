@@ -4,6 +4,9 @@
 
 <table>
   <tr>
+    <td>
+      <img src = "static/demoimages/1.png">
+    </td>
   </tr>
 </table>
 
